@@ -16,8 +16,13 @@
     <div class="container-fluid h-100">
         <div class="row d-flex h-100">
             <%- include('../partials/header.ejs') -%>
-                <div class="col-md-10 h-100 layer2">
-                    <%- body %>
+                <div class="col-md-10 h-100 contentArea">
+                    <div class="row content">
+                        <%- body %>
+                    </div>
+                    <div class="row footer">
+                        <%- include('../partials/footer.ejs') %>
+                    </div>
                 </div>
         </div>
     </div>
