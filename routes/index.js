@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/about-me' , (req, res) => {
   res.locals.title = 'About Me'
-  res.send('Hello world')
+  res.status(200).render('aboutMeView');
 })
 
 module.exports = router;
