@@ -9,23 +9,23 @@
     <link rel="stylesheet" href="./stylesheets/style.css">
     <script src="./javascripts/jquery.min.js"></script>
     <script src="./javascripts/bootstrap.min.js"></script>
-    <title>Ronald Personal Website</title>
+    <title><%- title %> </title>
 </head>
 
 <body>
-    <div class="container-fluid h-100">
+    <main class="container-fluid h-100">
         <div class="row d-flex h-100">
             <%- include('../partials/header.ejs') -%>
-                <div class="col-md-10 h-100 contentArea">
+                <section class="col-md-10 h-100 contentArea">
                     <div class="row content">
                         <%- body %>
                     </div>
                     <div class="row footer">
                         <%- include('../partials/footer.ejs') %>
                     </div>
-                </div>
+                </section>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
