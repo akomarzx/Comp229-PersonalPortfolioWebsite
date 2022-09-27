@@ -1,3 +1,6 @@
+// Student Name: Ronald Jr Ombao - ID: 301213219 
+// Date: September 27,2022
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +12,9 @@ var indexRouter = require('./routes/index');
 var app = express();
 
 // view engine setup
+// ejs mate for cleaner templates
+// by avoiding the includes of 
+// header and footer partial in all views
 app.engine('ejs' , ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
