@@ -44,7 +44,6 @@ button[data-bs-target="#projectCarousel"] {
   bottom: auto;
   background-color: black;
 }
-
 @media only screen and (max-width: 768px) {
   .sidebar {
     height: 10%;
