@@ -11,4 +11,8 @@ router.get('/about-me' , (req, res) => {
   res.status(200).render('aboutMeView');
 })
 
+router.get('/projects' , (req, res) => {
+  res.locals.title = 'Projects'
+  res.status(200).render('projects');
+})
 module.exports = router;

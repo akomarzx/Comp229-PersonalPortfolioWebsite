@@ -1,43 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
-html, body{
+html,
+body {
   height: 100vh;
 }
-body{
+
+body {
   height: 100%;
   font-family: 'Libre Baskerville', serif;
 }
 
-.sidebar{
+.sidebar {
   height: 100%;
 }
-.contentArea{
+
+.contentArea {
   background-color: yellow;
   color: black;
 }
 
-.content{
+.content {
   height: 85%;
 }
 
-.footer{
+.footer {
   height: 15%;
 }
 
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
-.navbar-collapse{ 
-    background-color: white;
+
+.navbar-collapse {
+  background-color: white;
 }
 
+button[data-bs-target="#projectCarousel"] {
+  filter: invert(100%);
+}
+
+.carousel-caption {
+  top: 0;
+  bottom: auto;
+  background-color: black;
+}
 
 @media only screen and (max-width: 768px) {
-  .sidebar{
+  .sidebar {
     height: 10%;
   }
 }
 
-.logoImage{
+.logoImage {
   clip-path: circle();
 }
