@@ -15,4 +15,14 @@ router.get('/projects' , (req, res) => {
   res.locals.title = 'Projects'
   res.status(200).render('projects');
 })
+
+router.get('/services' , (req, res) => {
+  res.locals.title = 'Services'
+  res.status(200).render('services');
+})
+
+router.get('/contact-me' , (req, res) => {
+  res.locals.title = 'Contact Me'
+  res.status(200).render('contactme');
+})
 module.exports = router;
