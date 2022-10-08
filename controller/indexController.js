@@ -7,27 +7,27 @@
 var express = require('express');
 
 let getHomepage = async (req, res) => {
-  res.render('index', { title: 'Homepage' });
+  res.render('indexViews/index', { title: 'Homepage' });
 }
 
 let getAboutMePage = async (req, res) => {
   res.locals.title = 'About Me'
-  res.status(200).render('aboutMeView');
+  res.status(200).render('indexViews/aboutMeView');
 } 
 
 let getProjectsPage =  async (req, res) => {
   res.locals.title = 'Projects'
-  res.status(200).render('projects');
+  res.status(200).render('indexViews/projects');
 }
 
 let getServicesPage = async (req, res) => {
-  res.locals.title = 'Services'
-  res.status(200).render('services');
+  res.locals.title = 'Services';
+  res.status(200).render('indexViews/services');
 }
 
 let getContactMePage = async (req, res) => {
   res.locals.title = 'Contact Me'
-  res.status(200).render('contactme');
+  res.status(200).render('indexViews/contactme');
 }
 
 module.exports = {
