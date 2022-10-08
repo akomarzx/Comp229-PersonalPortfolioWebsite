@@ -4,7 +4,7 @@
     Date: October 8, 2022
 */
 
-var express = require('express');
+let express = require('express');
 
 let getHomepage = async (req, res) => {
   res.render('indexViews/index', { title: 'Homepage' });
