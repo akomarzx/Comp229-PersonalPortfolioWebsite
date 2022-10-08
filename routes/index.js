@@ -2,8 +2,10 @@
 // Date: September 27,2022
 var express = require('express');
 var router = express.Router();
+let UserModel = require('../models/user');
 
-var indexController = require('../controller/indexController')
+var indexController = require('../controller/indexController');
+const { resolveInclude } = require('ejs');
 /* GET home page. */
 router.get('/', indexController.getHomepage);
 

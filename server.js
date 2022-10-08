@@ -7,7 +7,7 @@
 var app = require('./config/app');
 var debug = require('debug')('comp229-personalportfoliowebsite:server');
 var http = require('http');
-
+let dbConfig = require('./config/database')
 /**
  * Get port from environment and store in Express.
  */
@@ -18,7 +18,7 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
+var db = dbConfig();
 var server = http.createServer(app);
 
 /**
