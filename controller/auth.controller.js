@@ -3,7 +3,7 @@
     ID#: 301213219
     Date: October 9, 2022
 */
-let authServices = require('../services/authServices');
+let authServices = require('../services/auth.services');
 
 let getSignupPage = (req, res) => {
     res.locals.title = 'Register'
@@ -14,7 +14,8 @@ let createUser = async (req, res, next) => {
     try {
         const { username, password, emailAddress } = req.body;
         await authServices.registerUser(username, password, emailAddress);
-        res.status(201).redirect('/');
+        req.flash('success', 'Succesfully registered')
+        res.status(201).redirect('/auth/login');
     } catch (error) {
         next(error);
     }

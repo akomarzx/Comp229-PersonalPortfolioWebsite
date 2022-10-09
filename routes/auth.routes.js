@@ -6,7 +6,7 @@
 let express = require('express');
 let router = express.Router();
 let passport = require('passport')
-let authController = require('../controller/authController');
+let authController = require('../controller/auth.controller');
 
 router.route('/register')
     .get(authController.getSignupPage)
@@ -17,6 +17,7 @@ router.route('/login')
     .post(passport.authenticate('local', {
         successRedirect: '/business-contacts',
         failureRedirect: '/auth/login',
+        failureFlash: 'Invalid credential. Please try again'
     }))
 
 router.post('/sign-out', authController.signOut);

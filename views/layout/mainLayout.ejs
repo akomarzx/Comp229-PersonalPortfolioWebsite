@@ -18,12 +18,13 @@
 </head>
 
 <body>
-    <main class="container-fluid h-100">
+    <main class="container-fluid h-100">                    
+        <%- include('../partials/flashPartial.ejs') %> 
         <div class="row d-flex h-100" >
             <%- include('../partials/header.ejs') -%>
-            <%- include('../partials/flashPartial') %>
                 <section class="col-md-10 h-100 contentArea">
                     <div class="row content">
+
                         <%- body %>
                     </div>
                     <div class="row">

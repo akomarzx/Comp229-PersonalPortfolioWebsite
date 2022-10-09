@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 let UserModel = require('../models/user');
 let isLoggedIn= require('../middleware/isLoggedIn')
-var indexController = require('../controller/indexController');
+var indexController = require('../controller/index.controller');
 
 router.get('/', indexController.getHomepage);
 

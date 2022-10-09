@@ -12,7 +12,7 @@ let session = require('express-session');
 let MongoStore = require('connect-mongo');
 let passport = require('passport')
 let flash = require('connect-flash');
-
+let ApiError = require('../utils/ApiError')
 
 // setting up session store with Mongodb
 const store = MongoStore.create({
@@ -44,6 +44,7 @@ app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
 //flash middleware
+app.use(flash());
 app.use((req, res, next) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
@@ -56,9 +57,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/', require('../routes/index'));
-app.use('/auth', require('../routes/authRoutes'));
-app.use('/business-contacts', require('../routes/businessContacts'));
+app.use('/', require('../routes/index.routes'));
+app.use('/auth', require('../routes/auth.routes'));
+app.use('/business-contacts', require('../routes/businessContacts.routes'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -67,6 +68,11 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+  if(err instanceof ApiError){
+    req.flash('error' , err.message);
+    return res.redirect('back');
+  }
+  
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
