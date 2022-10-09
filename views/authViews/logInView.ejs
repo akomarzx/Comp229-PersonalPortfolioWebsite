@@ -4,17 +4,24 @@
     Date: October 9, 2022
 -->
 <% layout('../views/layout/mainLayout.ejs') %>
-    <form action="/auth/login" method="POST">
-        <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row my-2">
+                <h1>Log-in Page</h1>
+            </div>
+            <form action="/auth/login" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                </div>
+                <span>Not Registered yet? <a href="/auth/register">Click here.</a></span>
+                <div class="my-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-        </div>
-        <span>If you are not registered <a href="/auth/register">click here</a></span>
-        <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
+    </div>
