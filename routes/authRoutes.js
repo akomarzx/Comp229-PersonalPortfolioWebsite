@@ -8,6 +8,8 @@ let router = express.Router();
 
 let authController = require('../controller/authController');
 
-router.get('/register', authController.getSignupPage);
+router.route('/register')
+    .get(authController.getSignupPage)
+    .post(authController.createUser);
 
 module.exports = router;

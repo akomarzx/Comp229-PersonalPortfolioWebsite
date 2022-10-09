@@ -3,18 +3,21 @@
     ID#: 301213219
     Date: October 9, 2022
 -->
-<% layout('../layout/mainLayout.ejs') %>
-    <form action="">
+<% layout('../views/layout/mainLayout.ejs') %>
+    <form action="/auth/register" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" placeholder="Username">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="username" placeholder="Password">
+            <input type="password" class="form-control" id="password" placeholder="Password">
         </div>
         <div class="mb-3">
             <label for="emailAddress" class="form-label">Email Address</label>
             <input type="email" class="form-control" id="emailAddress" placeholder="Email Address">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>

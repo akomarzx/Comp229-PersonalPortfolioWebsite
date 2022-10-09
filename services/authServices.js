@@ -5,8 +5,8 @@
 */
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/user')
-const registerUser = async (username, password, emailAddress) => {
-    
+
+const registerUser = async (username, password, emailAddress) => {    
     try {
         const result = await UserModel.findOne({username: username , emailAddress: emailAddress}).exec();
         if(result){
