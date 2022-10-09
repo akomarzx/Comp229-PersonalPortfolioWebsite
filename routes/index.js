@@ -5,8 +5,7 @@ var router = express.Router();
 let UserModel = require('../models/user');
 let isLoggedIn= require('../middleware/isLoggedIn')
 var indexController = require('../controller/indexController');
-const { resolveInclude } = require('ejs');
-/* GET home page. */
+
 router.get('/', indexController.getHomepage);
 
 router.get('/about-me', indexController.getAboutMePage)

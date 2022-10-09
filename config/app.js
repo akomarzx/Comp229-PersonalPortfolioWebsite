@@ -7,14 +7,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var ejsMate = require('ejs-mate');
-var indexRouter = require('../routes/index');
-var authRouter = require('../routes/authRoutes');
 var app = express();
 let session = require('express-session');
-let mongoose =require('mongoose')
 let MongoStore = require('connect-mongo');
 let passport = require('passport')
+let flash = require('connect-flash');
 
+
+// setting up session store with Mongodb
 const store = MongoStore.create({
   mongoUrl: 'mongodb+srv://student1:redvelvet@assignment2-cluster.phqnw7l.mongodb.net/Assignment2?retryWrites=true&w=majority',
 })
@@ -30,19 +30,25 @@ app.use(session({
   store: store,
 }));
 
-const passportConfig = require('./passport')
-passportConfig(passport);
+//Passport related things
+const passportConfig = require('./passport')(passport);
 app.use(passport.initialize())
 app.use(passport.session());
+
 // view engine setup
 // ejs mate for cleaner templates
 // by avoiding the includes of 
 // header and footer partial in all views
-
 app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
+//flash middleware
+app.use((req, res, next) => {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -50,8 +56,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
+app.use('/', require('../routes/index'));
+app.use('/auth', require('../routes/authRoutes'));
+app.use('/business-contacts', require('../routes/businessContacts'));
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

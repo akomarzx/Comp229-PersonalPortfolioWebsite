@@ -15,8 +15,10 @@ router.route('/register')
 router.route('/login')
     .get(authController.getLoginPage)
     .post(passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/business-contacts',
         failureRedirect: '/auth/login',
     }))
-    
+
+router.post('/sign-out', authController.signOut);
+
 module.exports = router;
