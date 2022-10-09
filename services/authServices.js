@@ -8,7 +8,7 @@ const UserModel = require('../models/user')
 
 const registerUser = async (username, password, emailAddress) => {    
     try {
-        const result = await UserModel.findOne({username: username , emailAddress: emailAddress}).exec();
+        const result = await UserModel.findOne({$or:[{username: username}, {emailAddress: emailAddress}]}).exec();
         if(result){
             throw new Error('One of the information already exist in the system');
         }
@@ -19,6 +19,7 @@ const registerUser = async (username, password, emailAddress) => {
             emailAddress: emailAddress
         });
     } catch (error) {
+        console.log(error);
         throw error;
     }
 };
