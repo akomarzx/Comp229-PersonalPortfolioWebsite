@@ -19,7 +19,14 @@ let createUser = async (req, res, next) => {
         next(error);
     }
 }
+
+let getLoginPage = async (req, res) => {
+    res.locals.title = 'Log-in';
+    res.status(200).render('./authViews/loginView');
+}
+
 module.exports = {
     getSignupPage,
     createUser,
+    getLoginPage
 }
