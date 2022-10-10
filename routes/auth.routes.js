@@ -12,8 +12,17 @@ router.route('/register')
     .get(authController.getSignupPage)
     .post(authController.createUser);
 
+const redirectIfLoggedin = (req, res, next) => {
+    if(req.isAuthenticated()){
+        return res.redirect('/business-contacts')
+    }
+    else{
+        next();
+    }
+}
+
 router.route('/login')
-    .get(authController.getLoginPage)
+    .get(redirectIfLoggedin, authController.getLoginPage)
     .post(passport.authenticate('local', {
         successRedirect: '/business-contacts',
         failureRedirect: '/auth/login',

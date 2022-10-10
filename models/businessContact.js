@@ -1,17 +1,13 @@
 const mongoose = require('mongoose')
 
 const businessContactsSchema =  mongoose.Schema({
-    firstName: {
+    contactName: {
         type: String,
         required: true
     },
-    lastName: {
-        type: String,
-        required: false
-    },
     contactNumber : {
         type: String,
-        required: String
+        required: true
     },
     emailAddress: {
         type: String,
