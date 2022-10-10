@@ -18,7 +18,6 @@ let ApiError = require('../utils/ApiError')
 const store = MongoStore.create({
   mongoUrl: 'mongodb+srv://student1:redvelvet@assignment2-cluster.phqnw7l.mongodb.net/Assignment2?retryWrites=true&w=majority',
 })
-
 app.use(session({
   resave: false,
   saveUninitialized: true,
@@ -56,6 +55,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.use((req, res, next) => {
+  res.locals.loggedInState = req.isAuthenticated();
+  next();
+})
 
 app.use('/', require('../routes/index.routes'));
 app.use('/auth', require('../routes/auth.routes'));
