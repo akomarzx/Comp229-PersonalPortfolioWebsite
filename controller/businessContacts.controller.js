@@ -14,12 +14,19 @@ let getBusinessContactsPage = async (req, res) => {
 
 let getAddorUpdatePage = async (req, res, next) => {
     try {
+        // For some reason code formatter will put 
+        // a white space in string in ejs
+        // which will break the application
+        res.locals.undef = "undefined"
         if (req.query.mode && req.query.id) {
             let currentContact = await businessContactModel.findById(req.query.id);
             res.locals.currentContact = currentContact
             res.locals.title = 'Update Contact';
+            res.locals.isEdit = true;
             res.locals.action = `/business-contacts/${currentContact.id}?_method=PATCH`;
+            res.locals.deleteAction = `/business-contacts/${currentContact.id}?_method=DELETE`
         } else {
+            res.locals.isEdit = false;
             res.locals.title = 'Add New Contact';
             res.locals.action = '/business-contacts';
         }
