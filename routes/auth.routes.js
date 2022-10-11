@@ -14,7 +14,7 @@ router.route('/register')
 
 const redirectIfLoggedin = (req, res, next) => {
     if(req.isAuthenticated()){
-        return res.redirect('/business-contacts')
+        return res.redirect('/business-contacts/business-contacts-page')
     }
     else{
         next();
@@ -24,7 +24,7 @@ const redirectIfLoggedin = (req, res, next) => {
 router.route('/login')
     .get(redirectIfLoggedin, authController.getLoginPage)
     .post(passport.authenticate('local', {
-        successRedirect: '/business-contacts',
+        successRedirect: '/business-contacts/business-contacts-page',
         failureRedirect: '/auth/login',
         failureFlash: 'Invalid credential. Please try again'
     }))

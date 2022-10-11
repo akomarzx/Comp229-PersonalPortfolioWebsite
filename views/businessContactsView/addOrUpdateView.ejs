@@ -1,0 +1,50 @@
+<% layout('../views/layout/mainLayout') %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row my-2">
+        <h1><%- title %> </h1>
+      </div>
+      <form action="<%= action %> " method="POST">
+        <div class="mb-3">
+          <label for="contactName" class="form-label">Contact Name</label>
+          <input type="text" 
+          class="form-control" 
+          id="contactName" 
+          placeholder="Contact Name" 
+          name="contactName"
+          value="<%= typeof(currentContact) != "undefined" ? currentContact.contactName : '' %> ">
+        </div>
+        <div class="mb-3">
+          <label for="contactNumber" class="form-label">Contact Number</label>
+          <input type="tel" 
+          class="form-control" 
+          id="contactNumber" 
+          placeholder="Contact Number" 
+          name="contactNumber"
+          value="<%= typeof(currentContact) != "undefined" ? currentContact.contactNumber : '' %> ">
+        </div>
+        <div class="mb-3">
+          <label for="contactEmail" class="form-label">Email address</label>
+          <input 
+          type="email" 
+          class="form-control" 
+          id="emailAddress" 
+          placeholder="Email Address" 
+          name="emailAddress"
+          value="<%= typeof(currentContact) != "undefined" ? currentContact.emailAddress : '' %> ">
+        </div>
+        <!-- <div>
+          <input 
+          type="hidden" 
+          name="id" 
+          value=<%= typeof(currentContact) != "undefined" ? currentContact.id : '' %> >
+        </div> -->
+        <div class="my-2">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+      <a href="/business-contacts/business-contacts-page">
+        <button class="btn btn-primary">Cancel</button>
+      </a>
+    </div>
+  </div>

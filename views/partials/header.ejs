@@ -35,6 +35,9 @@
                 </li>
 
                 <% if (loggedInState) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/business-contacts/business-contacts-page">Business Contacts</a>
+                    </li>
                     <div>
                         <form action="/auth/sign-out" method="POST">
                             <button class="btn btn-primary" type="submit">Sign-out</button>
