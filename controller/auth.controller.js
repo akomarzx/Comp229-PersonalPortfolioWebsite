@@ -23,7 +23,7 @@ let createUser = async (req, res, next) => {
 
 let getLoginPage = async (req, res) => {
     res.locals.title = 'Log-in';
-    res.status(200).render('./authViews/loginView');
+    res.status(200).render('./authViews/logInView');
 }
 
 let signOut = (req, res) => {
