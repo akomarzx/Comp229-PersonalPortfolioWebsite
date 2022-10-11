@@ -6,7 +6,7 @@ Date: October 9, 2022
 <% layout('../views/layout/mainLayout') %>
   <div class="row">
     <div class="col-md-4">
-      <div class="row my-2">
+      <div class="row my-4">
         <h1>
           <%- title %>
         </h1>
@@ -39,6 +39,7 @@ Date: October 9, 2022
               <div class="my-2">
                 <button class="btn btn-primary" type="submit">Submit</button>
               </div>
+              <input type="hidden" value="<%= typeof(currentContact) != undef ? currentContact.id : null%>" name="id">
             </form>
             <a href="/business-contacts/business-contacts-page">
               <button class="btn btn-primary">Cancel</button>

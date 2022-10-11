@@ -5,9 +5,10 @@ Date: October 9, 2022
 */
 
 let businessContactModel = require('../models/businessContact')
+
 let getBusinessContactsPage = async (req, res) => {
     res.locals.title = 'Business Contacts Page'
-    const contacts = await businessContactModel.find();
+    const contacts = await businessContactModel.find().sort({contactName : 1});
     res.locals.contacts = contacts;
     res.status(200).render('./businessContactsView/businessContactsView');
 }
@@ -42,7 +43,7 @@ let getBusinessContact = async (req, res) => {
 
 let updateBusinessContact = async (req, res, next) => {
     try {
-        await businessContactModel.updateOne({ id: req.body.id }, {
+        let ress = await businessContactModel.updateOne({ _id: req.body.id }, {
             contactName: req.body.contactName,
             contactNumber: req.body.contactNumber,
             emailAddress: req.body.emailAddress
