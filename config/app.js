@@ -14,10 +14,12 @@ let passport = require('passport')
 let flash = require('connect-flash');
 let ApiError = require('../utils/ApiError')
 let methodOverride = require('method-override')
+
 // setting up session store with Mongodb
 const store = MongoStore.create({
   mongoUrl: 'mongodb+srv://student1:redvelvet@assignment2-cluster.phqnw7l.mongodb.net/Assignment2?retryWrites=true&w=majority',
 })
+
 app.use(session({
   resave: false,
   saveUninitialized: true,

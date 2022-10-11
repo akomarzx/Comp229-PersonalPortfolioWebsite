@@ -1,3 +1,8 @@
+<!--
+Student Name: Ronald JR Ombao
+ID#: 301213219
+Date: October 9, 2022
+-->
 <% layout('../views/layout/mainLayout') %>
   <div class="row">
     <div class="col-md-4">
@@ -12,7 +17,8 @@
           id="contactName" 
           placeholder="Contact Name" 
           name="contactName"
-          value="<%= typeof(currentContact) != "undefined" ? currentContact.contactName : '' %> ">
+          required
+          value="<%= typeof(currentContact) != "undefined" ? currentContact.contactName : null %> ">
         </div>
         <div class="mb-3">
           <label for="contactNumber" class="form-label">Contact Number</label>
@@ -21,8 +27,10 @@
           id="contactNumber" 
           placeholder="Contact Number" 
           name="contactNumber"
-          value="<%= typeof(currentContact) != "undefined" ? currentContact.contactNumber : '' %> ">
+          required
+          value="<%= typeof(currentContact) != "undefined" ? currentContact.contactNumber : null %> ">
         </div>
+        <!-- TODO: make sure form is empty -->
         <div class="mb-3">
           <label for="contactEmail" class="form-label">Email address</label>
           <input 
@@ -31,14 +39,9 @@
           id="emailAddress" 
           placeholder="Email Address" 
           name="emailAddress"
-          value="<%= typeof(currentContact) != "undefined" ? currentContact.emailAddress : '' %> ">
+          required
+          value="<%= typeof(currentContact) != "undefined" ? currentContact.emailAddress : null %> ">
         </div>
-        <!-- <div>
-          <input 
-          type="hidden" 
-          name="id" 
-          value=<%= typeof(currentContact) != "undefined" ? currentContact.id : '' %> >
-        </div> -->
         <div class="my-2">
           <button class="btn btn-primary" type="submit">Submit</button>
         </div>

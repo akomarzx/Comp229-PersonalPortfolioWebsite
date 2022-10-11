@@ -1,5 +1,10 @@
-let businessContactModel = require('../models/businessContact')
+/*
+Student Name: Ronald JR Ombao
+ID#: 301213219
+Date: October 9, 2022
+*/
 
+let businessContactModel = require('../models/businessContact')
 let getBusinessContactsPage = async (req, res) => {
     res.locals.title = 'Business Contacts Page'
     const contacts = await businessContactModel.find();
@@ -10,7 +15,6 @@ let getBusinessContactsPage = async (req, res) => {
 let getAddorUpdatePage = async (req, res, next) => {
     try {
         if (req.query.mode && req.query.id) {
-            res.locals.mode = 'edit';
             let currentContact = await businessContactModel.findById(req.query.id);
             res.locals.currentContact = currentContact
             res.locals.title = 'Update Contact';

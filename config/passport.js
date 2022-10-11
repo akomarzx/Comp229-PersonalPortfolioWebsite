@@ -1,3 +1,8 @@
+/*
+Student Name : Ronald JR Ombao
+ID#: 301213219
+Date: October 8, 2022
+*/
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const UserModel = require('../models/user');
@@ -30,12 +35,12 @@ module.exports = async (passport) => {
     }));
 
   passport.serializeUser(function (user, done) {
-    done(null, user.username);
+    done(null, user.id);
   });
 
-  passport.deserializeUser(async (username, done) => {
+  passport.deserializeUser(async (id, done) => {
     try {
-      const user = await UserModel.findOne({ username: username });
+      const user = await UserModel.findOne({ id : id }).exec();
       done(null, user);
     } catch (error) {
       done(error);
