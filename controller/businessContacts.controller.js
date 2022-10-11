@@ -58,7 +58,7 @@ let updateBusinessContact = async (req, res, next) => {
 
 let deleteBusinessContact = async (req, res, next) => {
     try {
-        await businessContactModel.deleteOne({id: req.params.id});
+        await businessContactModel.deleteOne({_id: req.params.id});
         req.flash('success' , 'Deleted Sucessfully');
         res.redirect('/business-contacts/business-contacts-page'); 
     } catch (error) {
