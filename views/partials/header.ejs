@@ -33,6 +33,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact-me">Contact Me</a>
                 </li>
+
+                <% if (loggedInState) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/business-contacts/business-contacts-page">Business Contacts</a>
+                    </li>
+                    <div>
+                        <form action="/auth/sign-out" method="POST">
+                            <button class="btn btn-primary" type="submit">Sign-out</button>
+                        </form>
+                    </div>
+                    <% } else {%>
+                        <div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/login">Log-in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/auth/register">Sign-up</a>
+                            </li>
+                        </div>
+                        <% } %>
             </ul>
         </div>
 

@@ -1,0 +1,36 @@
+<!-- 
+    Student Name: Ronald JR Ombao
+    ID#: 301213219
+    Date: October 9, 2022
+-->
+<% layout('../views/layout/mainLayout.ejs') %>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row my-2">
+                <h1>Registration Page</h1>
+            </div>
+            <form action="/auth/register" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="emailAddress" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="emailAddress" placeholder="Email Address"
+                        name="emailAddress" required>
+                </div>
+                <div>
+                    <span>Already Registered? <a href="/auth/login">Log-in now</a></span>
+                </div>
+                <div class="my-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary">Clear Form</button>
+                </div>
+        </div>
+    </div>
+
+    </form>

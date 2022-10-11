@@ -1,0 +1,56 @@
+<!--
+    Student Name: Ronald JR Ombao
+    ID#: 301213219
+    Date: October 9, 2022
+-->
+<% layout('../views/layout/mainLayout') %>
+    <div class="row">
+        <div class="col-12">
+            <div class="row my-3">
+                <h1 class="text-center">Business Contacts</h1>
+            </div>
+            <div class="row my-2">
+                <a href="/business-contacts/add-update">
+                    <button class="btn btn-primary">Add New Contact</button>
+                </a>
+            </div>
+            <div class="row">
+                <div class="col-12 overflow-auto">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>Contact Name</th>
+                                <th>Contact Number</th>
+                                <th>Email Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for( let index=0; index < contacts.length; index++ ) { %>
+                                <tr>
+                                    <td>
+                                        <%- contacts[index].contactName %>
+                                    </td>
+                                    <td>
+                                        <%- contacts[index].contactNumber %>
+                                    </td>
+                                    <td>
+                                        <%- contacts[index].emailAddress %>
+                                    </td>
+                                    <td>
+                                        <a href="/business-contacts/add-update?mode=edit&id=<%- contacts[index].id %> ">
+                                            <button class="btn btn-primary">Update</button>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <form method="POST" action=<%-`/business-contacts/${contacts[index].id}?_method=DELETE`%>>
+                                            <button class="btn btn-danger" type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
