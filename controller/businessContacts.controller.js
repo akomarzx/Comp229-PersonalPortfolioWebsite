@@ -73,7 +73,7 @@ let getBusinessContacts = async (req, res) => {
 let createBusinessContact = async (req, res, next) => {
     try {
         const { contactName, contactNumber, emailAddress } = req.body;
-        await businessContactModel.create({ contactName: contactName, contactNumber: contactNumber, emailAddress: emailAddress })
+        await businessContactModel.create({ contactName: contactName.trim(), contactNumber: contactNumber, emailAddress: emailAddress })
         req.flash('success', 'Contact Succesfully Added');
         res.redirect('/business-contacts/business-contacts-page');
     } catch (error) {
