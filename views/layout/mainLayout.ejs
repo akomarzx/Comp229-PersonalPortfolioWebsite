@@ -14,22 +14,21 @@
     <link rel="stylesheet" href="../stylesheets/style.css">
     <script src="../javascripts/jquery.min.js"></script>
     <script src="../javascripts/bootstrap.min.js"></script>
-    <title><%- title %> </title>
+    <title>
+        <%- title %>
+    </title>
 </head>
 
 <body>
-    <main class="container-fluid h-100">                    
-        <%- include('../partials/flashPartial.ejs') %> 
-        <div class="row d-flex h-100" >
+    <main class="container-fluid h-100">
+        <div class="row d-flex h-100">
             <%- include('../partials/header.ejs') -%>
-                <section class="col-md-10 h-100 contentArea">
-                    <div class="row content">
-
-                        <%- body %>
-                    </div>
-                    <div class="row">
+                <section class="col-md-10 h-100 contentArea ">
+                    <%- include('../partials/flashPartial.ejs') %>
+                        <div class="row content overflow-auto">
+                            <%- body %>
+                        </div>
                         <%- include('../partials/footer.ejs') %>
-                    </div>
                 </section>
         </div>
     </main>

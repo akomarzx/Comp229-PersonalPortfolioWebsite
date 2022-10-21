@@ -15,7 +15,7 @@
                 </form>
             </div>
             <div class="row">
-                <div class="col-12 overflow-auto">
+                <div class="col-12">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
@@ -42,7 +42,8 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <form method="POST" action=<%-`/business-contacts/${contacts[index].id}?_method=DELETE`%>>
+                                        <form method="POST"
+                                            action=<%-`/business-contacts/${contacts[index].id}?_method=DELETE`%>>
                                             <button class="btn btn-danger" type="submit">Delete</button>
                                         </form>
                                     </td>
