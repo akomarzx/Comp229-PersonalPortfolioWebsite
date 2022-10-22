@@ -6,6 +6,7 @@ Date: October 8, 2022
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const UserModel = require('../models/user');
+const ApiError = require('../utils/ApiError');
 
 const validatePassword = async (plainText, hashedPassword) => {
   try {
@@ -16,7 +17,7 @@ const validatePassword = async (plainText, hashedPassword) => {
 };
 
 module.exports = async (passport) => {
-  passport.use(new LocalStrategy(
+  passport.use('login',new LocalStrategy(
     async (username, password, done) => {
       try {
         const user = await UserModel.findOne({ username: username }).exec();
@@ -32,7 +33,29 @@ module.exports = async (passport) => {
       } catch (error) {
         return done(error);
       }
-    }));
+    })),
+  
+  passport.use('register' , new LocalStrategy({
+    passReqToCallback: true
+  },
+    async (req, username, password, done) => {    
+      try {
+          const result = await UserModel.findOne({$or:[{username: username}, {emailAddress: req.body.emailAddress}]}).exec();
+          if(result){
+              throw new ApiError('One of the information already exist in the system');
+          }
+          const hashedPassword = await bcrypt.hash(password, 10);
+          const newUser = await UserModel.create({
+              username: username,
+              password: hashedPassword,
+              emailAddress: req.body.emailAddress
+          });
+          done(null, newUser);
+      } catch (error) {
+          console.log(error);
+          done(error);
+      }
+  }))
 
   passport.serializeUser(function (user, done) {
     done(null, user.id);

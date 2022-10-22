@@ -10,7 +10,12 @@ let authController = require('../controller/auth.controller');
 
 router.route('/register')
     .get(authController.getSignupPage)
-    .post(authController.createUser);
+    .post(passport.authenticate('register', {
+        successRedirect : '/auth/login',
+        failureRedirect: '/auth/register',
+        successFlash: 'Succesfully Registered',
+        failureFlash: 'One of the information already exist'
+    }));
 
 const redirectIfLoggedin = (req, res, next) => {
     if(req.isAuthenticated()){
@@ -23,7 +28,7 @@ const redirectIfLoggedin = (req, res, next) => {
 
 router.route('/login')
     .get(redirectIfLoggedin, authController.getLoginPage)
-    .post(passport.authenticate('local', {
+    .post(passport.authenticate('login', {
         successRedirect: '/business-contacts/business-contacts-page',
         failureRedirect: '/auth/login',
         failureFlash: 'Invalid credential. Please try again'
