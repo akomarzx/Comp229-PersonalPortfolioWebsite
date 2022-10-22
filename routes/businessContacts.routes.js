@@ -8,6 +8,8 @@ let router = express.Router();
 let businessContactsController = require('../controller/businessContacts.controller')
 let isLoggedIn = require('../middleware/isLoggedIn')
 
+router.use(isLoggedIn);
+
 router.get('/business-contacts-page' ,businessContactsController.getBusinessContactsPage);
 
 router.get('/add-update', businessContactsController.getAddorUpdatePage)
