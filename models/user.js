@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true,
+        trim: true,
     },
     password: {
         type: String,
@@ -17,6 +18,7 @@ const userSchema = mongoose.Schema({
     emailAddress: {
         type: String,
         required: true,
+        trim: true
     }
 })
 

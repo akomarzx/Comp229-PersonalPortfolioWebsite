@@ -3,6 +3,17 @@
     ID#: 301213219
     Date: October 9, 2022
 */
+let passport = require('passport')
+
+let logIn = (req, res, next) => {
+    passport.authenticate('login', {
+        successRedirect: req.session.url ||'/business-contacts/business-contacts-page',
+        failureRedirect: '/auth/login',
+        failureFlash: 'Invalid credential. Please try again'
+})
+    (req, res, next);
+    delete req.session.url;
+}
 
 let getSignupPage = (req, res) => {
     res.locals.title = 'Register'
@@ -26,5 +37,6 @@ let signOut = (req, res) => {
 module.exports = {
     getSignupPage,
     getLoginPage,
-    signOut
+    signOut,
+    logIn
 }
