@@ -19,9 +19,14 @@ Date: October 9, 2022
           <% } %>
             <form action="<%= action %> " method="POST">
               <div class="mb-3">
-                <label for="contactName" class="form-label">Contact Name</label>
-                <input type="text" class="form-control" id="contactName" placeholder="Contact Name" name="contactName"
-                  required value="<%= typeof(currentContact) != undef ? currentContact.contactName : null %> ">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName"
+                  required value="<%= typeof(currentContact) != undef ? currentContact.firstName : null %> ">
+              </div>
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName"
+                  required value="<%= typeof(currentContact) != undef ? currentContact.lastName : null %> ">
               </div>
               <div class="mb-3">
                 <label for="contactNumber" class="form-label">Contact Number</label>

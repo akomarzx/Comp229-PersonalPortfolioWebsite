@@ -28,11 +28,7 @@ const redirectIfLoggedin = (req, res, next) => {
 
 router.route('/login')
     .get(redirectIfLoggedin, authController.getLoginPage)
-    .post(passport.authenticate('login', {
-        successRedirect: '/business-contacts/business-contacts-page',
-        failureRedirect: '/auth/login',
-        failureFlash: 'Invalid credential. Please try again'
-    }))
+    .post(authController.logIn)
 
 router.post('/sign-out', authController.signOut);
 

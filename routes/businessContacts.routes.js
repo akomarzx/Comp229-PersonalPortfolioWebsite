@@ -19,6 +19,5 @@ router.route('/:id')
     .delete(businessContactsController.deleteBusinessContact)
 
 router.route('/')
-    .get(businessContactsController.getBusinessContacts)
     .post(businessContactsController.createBusinessContact)
 module.exports = router;

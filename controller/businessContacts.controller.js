@@ -8,7 +8,7 @@ let businessContactModel = require('../models/businessContact')
 
 let getBusinessContactsPage = async (req, res) => {
     res.locals.title = 'Business Contacts Page'
-    const contacts = await businessContactModel.find().sort({contactName : 1});
+    const contacts = await businessContactModel.find().sort({firstName : 1});
     res.locals.contacts = contacts;
     res.status(200).render('./businessContactsView/businessContactsView');
 }
@@ -37,14 +37,12 @@ let getAddorUpdatePage = async (req, res, next) => {
     }
 }
 
-let getBusinessContact = async (req, res) => {
-    console.log()
-}
 
 let updateBusinessContact = async (req, res, next) => {
     try {
-        let ress = await businessContactModel.updateOne({ _id: req.body.id }, {
-            contactName: req.body.contactName,
+        await businessContactModel.updateOne({ _id: req.body.id }, {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             contactNumber: req.body.contactNumber,
             emailAddress: req.body.emailAddress
         })
@@ -66,14 +64,17 @@ let deleteBusinessContact = async (req, res, next) => {
     }
 }
 
-let getBusinessContacts = async (req, res) => {
-
-}
 
 let createBusinessContact = async (req, res, next) => {
     try {
-        const { contactName, contactNumber, emailAddress } = req.body;
-        await businessContactModel.create({ contactName: contactName.trim(), contactNumber: contactNumber, emailAddress: emailAddress })
+        const { firstName, lastName, contactNumber, emailAddress } = req.body;
+        
+        await businessContactModel.create({ 
+            firstName: firstName, 
+            lastName: lastName, 
+            contactNumber: contactNumber,
+            emailAddress: emailAddress 
+        })
         req.flash('success', 'Contact Succesfully Added');
         res.redirect('/business-contacts/business-contacts-page');
     } catch (error) {
@@ -85,9 +86,7 @@ let createBusinessContact = async (req, res, next) => {
 module.exports = {
     getBusinessContactsPage,
     getAddorUpdatePage,
-    getBusinessContact,
     updateBusinessContact,
     deleteBusinessContact,
-    getBusinessContacts,
     createBusinessContact
 }
